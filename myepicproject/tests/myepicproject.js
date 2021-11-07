@@ -28,6 +28,10 @@ const main = async () => {
 
     console.log('Transaction Signature:', tx);
 
+    program.addEventListener('GifAdded', (event) => {
+        console.log('GifAdded event:', event.index, event.gifLink);
+    })
+
     let account = await program.account.baseAccount.fetch(baseAccount.publicKey);
 
     console.log('Kitty Gif Account', account.totalGifs.toString());

@@ -22,6 +22,12 @@ pub mod myepicproject {
 
         base_account.gif_list.push(item);
         base_account.total_gifs += 1;
+
+        emit!(GifAdded {
+            gif_link: gif_link,
+            user_address: *base_account.to_account_info().key,
+            index: base_account.total_gifs - 1,
+        });
         Ok(())
     }
 
@@ -68,4 +74,11 @@ pub struct ItemStruct  {
 pub struct BaseAccount {
     pub total_gifs: u32,
     pub gif_list: Vec<ItemStruct>,
+}
+
+#[event]
+pub struct GifAdded {
+    pub gif_link: String,
+    pub user_address: Pubkey,
+    pub index: u32,
 }
