@@ -32,6 +32,10 @@ const main = async () => {
         console.log('GifAdded event:', event.index, event.gifLink);
     })
 
+    program.addEventListener('GifVoted', (event) => {
+        console.log('GifVoted event:', event.index, event.votes);
+    })
+
     let account = await program.account.baseAccount.fetch(baseAccount.publicKey);
 
     console.log('Kitty Gif Account', account.totalGifs.toString());

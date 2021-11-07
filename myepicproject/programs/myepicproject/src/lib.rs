@@ -38,6 +38,11 @@ pub mod myepicproject {
 
         base_account.gif_list[gif_id].votes += 1;
 
+        emit!(GifVoted {
+            index: gif_id as u32,
+            votes: base_account.gif_list[gif_id].votes,
+        });
+
         Ok(())
     }
 }
@@ -81,4 +86,10 @@ pub struct GifAdded {
     pub gif_link: String,
     pub user_address: Pubkey,
     pub index: u32,
+}
+
+#[event]
+pub struct GifVoted {
+    pub index: u32,
+    pub votes: u32,
 }
