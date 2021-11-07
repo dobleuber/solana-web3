@@ -38,6 +38,24 @@ const main = async () => {
         }
     });
 
+    await program.rpc.addGif('https://c.tenor.com/ZY20qdo9d5wAAAAM/kitten-cute.gif', {
+        accounts: {
+            baseAccount: baseAccount.publicKey,
+        }
+    });
+
+    await program.rpc.voteGif(1, {
+        accounts: {
+            baseAccount: baseAccount.publicKey,
+        }
+    });
+
+    await program.rpc.voteGif(1, {
+        accounts: {
+            baseAccount: baseAccount.publicKey,
+        }
+    });
+
     account = await program.account.baseAccount.fetch(baseAccount.publicKey);
 
     console.log('new Kitty Gif Account', account.totalGifs.toString());

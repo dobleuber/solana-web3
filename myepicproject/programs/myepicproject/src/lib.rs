@@ -24,6 +24,16 @@ pub mod myepicproject {
         base_account.total_gifs += 1;
         Ok(())
     }
+
+    pub fn vote_gif(ctx: Context<VoteGif>, gif_id: u32) -> ProgramResult {
+        let base_account = &mut ctx.accounts.base_account;
+
+        let gif_id = gif_id as usize;
+
+        base_account.gif_list[gif_id].votes += 1;
+
+        Ok(())
+    }
 }
 
 #[derive(Accounts)]
@@ -56,6 +66,6 @@ pub struct ItemStruct  {
 
 #[account]
 pub struct BaseAccount {
-    pub total_gifs: u64,
+    pub total_gifs: u32,
     pub gif_list: Vec<ItemStruct>,
 }
