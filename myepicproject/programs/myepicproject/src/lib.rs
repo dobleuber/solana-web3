@@ -21,7 +21,7 @@ pub mod myepicproject {
         };
 
         base_account.gif_list.push(item);
-        base_account.total_gifs += 1;
+        base_account.total_gifs = base_account.gif_list.len() as u32;
 
         emit!(GifAdded {
             gif_link: gif_link,
